@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit</title>
+</head>
+<body>
+<form action="{% url 'update' dataname.id %}" method="POST">
+  {% csrf_token %}
+    Name:<input type="text" name="name" value="{{dataname.name}}"><br/>
+    Age:<input type="number" name="age" value="{{dataname.age}}">
+    <button>Edit data</button>
+</form>
+</body>
+</html>

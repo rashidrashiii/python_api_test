@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<h1>CRUD</h1>
+<form action="getdata" method="POST">
+    {% csrf_token %}
+    Name:<input type="text" name="name"><br/><br/>
+    Age:<input type="number" name="age"><br/><br/>
+    <button>Send data</button>
+</form><br/>
+
+<table border="1" cellpadding="10" cellspacing="10">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Update
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+    {% for student in dataname %}
+    <tr>
+        <td>
+            {{student.name}}
+        </td>
+        <th>
+            {{student.age}}
+        </th>
+        <th>
+            <a href="{% url 'update' student.id %}">Update</a>
+        </th>
+        <th>
+             <a href="{% url 'delete' student.id %}">Delete</a>
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
